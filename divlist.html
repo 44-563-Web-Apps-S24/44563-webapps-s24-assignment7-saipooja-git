@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html> <head> <style>
+    .flex-container {
+      display: flex;  flex-direction:row;
+      background-color: red;
+  }
+
+.flex-container > div {  /*div children of the flex container*/
+  background-color: #f1f1f1; 
+  margin: 10px;  padding: 20px;  font-size: 30px;
+}
+
+/* Responsive layout */
+@media (max-width: 600px) { 
+	 .flex-container{
+		 flex-direction:column;
+		 background-color: green;
+	  }
+	}
+</style></head>
+
+
+
+<body>
+    <h2>builds list with divs</h2>
+		<div class="flex-container" id="target">
+            <input type="text" id="textInput">
+		  <div>row item 1</div>   
+		  <div>row item 2</div>  
+		  <div>row item 3</div>  
+		</div>
+	
+	<p> Press the button to create an new element of type div and then add it to the container.
+		</p>
+		<button onclick="makeNewDiv()">Add end</button>
+    <button onclick="addFront()">Add front</button>
+    <button onclick="removeItem()">Remove</button>
+        <script>
+            function makeNewDiv(){     
+		/* make the div and its text */
+		let element = document.createElement("div")
+		element.innerHTML = "an item after 3"
+		element.style.color = "orange"
+
+		/* add it to the container */
+		let container = document.getElementById('target')
+		container.appendChild(element)
+		
+	}
+    
+            function addFront() {
+                var inputValue = document.getElementById('textInput').value;
+                var newDiv = document.createElement('div');
+                newDiv.innerHTML = inputValue;
+                newDiv.className = "divlist";
+                var container = document.querySelector('.flex-container');
+                container.insertBefore(newDiv, container.firstChild);
+            }
+    
+            function removeItem() {
+                var divListItems = document.getElementsByClassName("divlist");
+                var length = divListItems.length;
+                if (length > 0) {
+                    var middleIndex = Math.floor(length / 2);
+                    divListItems[middleIndex].remove();
+                }
+            }
+        </script>
+	
+	
+</body>
+<script>
+	
+</script>
+</html>	
