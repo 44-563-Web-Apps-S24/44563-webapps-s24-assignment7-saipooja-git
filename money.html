@@ -41,6 +41,7 @@
     <div id="score" style="background-color: rgb(177, 137, 85);"> Score is zero.</div>
     <p onclick="help()" style="background-color: rgb(157, 148, 225);">Click for help.</p>
     <div id="help" style="background-color: rgb(215, 161, 161);">Help report</div>
+    <p style= "text-align:center;font-family: cursive";><button class="btn btn-primary" onclick="newGame()">new game</button></p>    
     <div class="game-field">
         <!--row1-->
         <div class="location"><img src="building.jpg" alt="Building" id="img0" onclick="check(0)"
@@ -184,6 +185,16 @@
             }
 
             document.getElementById("help").innerText = result;
+        }
+        function newGame() {
+            monsterLocation = Math.floor(Math.random() * 35);
+            fancyCoinLocations = Math.floor(Math.random() * 35);
+            console.log(monsterLocation);
+            console.log(fancyCoinLocations);
+            score=null;
+            locations=null;
+            document.getElementById("locations").innerText =`locations: 0`; 
+            document.getElementById("score").innerText = `score: 0`;
         }
     </script>
 

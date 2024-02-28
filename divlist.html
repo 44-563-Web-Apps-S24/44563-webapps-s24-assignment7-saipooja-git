@@ -17,7 +17,8 @@
 		 background-color: green;
 	  }
 	}
-</style></head>
+</style>
+</head>
 
 
 
@@ -35,6 +36,8 @@
 		<button onclick="makeNewDiv()">Add end</button>
     <button onclick="addFront()">Add front</button>
     <button onclick="removeItem()">Remove</button>
+    <button onclick="swapItems()">Swap</button>
+
         <script>
             function makeNewDiv(){     
 		/* make the div and its text */
@@ -65,6 +68,31 @@
                     divListItems[middleIndex].remove();
                 }
             }
+            function swapItems() {
+            var divListItems = document.getElementsByClassName("divlist");
+            var length = divListItems.length;
+            if (length > 1) {
+                var index1 = Math.floor(Math.random() * length);
+                var index2 = Math.floor(Math.random() * length);
+
+                // Ensure that index1 and index2 are distinct
+                while (index1 === index2) {
+                    index2 = Math.floor(Math.random() * length);
+                }
+
+                var item1 = divListItems[index1];
+                var item2 = divListItems[index2];
+
+                var nextSibling = item2.nextSibling;
+                var parent = item2.parentNode;
+
+                // Swap positions
+                parent.insertBefore(item1, item2);
+                parent.insertBefore(nextSibling, item1);
+            }
+        }
+
+
         </script>
 	
 	
